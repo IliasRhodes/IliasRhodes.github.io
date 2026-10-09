@@ -37,3 +37,9 @@ test('no Internal section is published', async ({ page }) => {
     await expect(page.locator('main h2', { hasText: /internal/i })).toHaveCount(0);
   }
 });
+
+test('CV PDF is served', async ({ request }) => {
+  const res = await request.get('/cv.pdf');
+  expect(res.status()).toBe(200);
+  expect(res.headers()['content-type']).toContain('pdf');
+});
