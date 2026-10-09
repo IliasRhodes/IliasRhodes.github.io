@@ -51,7 +51,8 @@ const cells = Array.from({ length: 9 }, (_, i) => i);
   .bubble { aspect-ratio: 1; display: grid; place-items: center; border: 1px solid var(--ink); border-radius: 22px;
             background: color-mix(in srgb, var(--bg) 55%, transparent); cursor: pointer; padding: 0; }
   .bubble[aria-disabled='true'] { cursor: default; }
-  .bubble.win { outline: 3px solid var(--green); outline-offset: 2px; }
+  .bubble.win { outline: 3px dashed var(--green); outline-offset: 2px; } /* dashed, so solid :focus-visible stays distinguishable */
+  .bubble.win:focus-visible { outline-style: solid; outline-color: var(--ink); }
   .pill { display: none; }
   .bubble[data-mark='Y'] .pill { display: block; width: 74%; height: 34%; border: 2px solid var(--ink); border-radius: 999px;
                                  background: linear-gradient(90deg, var(--green) 50%, var(--bg) 50%); rotate: -35deg; }

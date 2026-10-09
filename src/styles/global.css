@@ -1,7 +1,7 @@
 /* src/styles/global.css */
 *, *::before, *::after { box-sizing: border-box; }
 html { -webkit-text-size-adjust: 100%; }
-body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--font-body); font-size: var(--text); line-height: 1.6; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--font-body); font-size: var(--text); line-height: 1.6; overflow-wrap: anywhere; }
 h1, h2, h3 { line-height: 1.15; letter-spacing: -0.01em; font-weight: 600; text-wrap: balance; }
 h1 { font-size: var(--h1); letter-spacing: -0.02em; margin: 0 0 var(--space-3); }
 a { color: var(--ink); text-decoration: underline; text-decoration-color: var(--green); text-decoration-thickness: 2px; text-underline-offset: 3px; }

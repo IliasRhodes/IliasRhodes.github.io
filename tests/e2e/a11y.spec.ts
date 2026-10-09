@@ -31,3 +31,15 @@ test('skip link moves focus to main content', async ({ page }) => {
   await page.keyboard.press('Enter');
   await expect(page.locator('#main')).toBeFocused();
 });
+
+test('a very long word never causes sideways scroll at 320px', async ({ page }) => {
+  await page.setViewportSize({ width: 320, height: 640 });
+  for (const p of ['/', '/work/pilly/', '/about/']) {
+    await page.goto(p);
+    await page.evaluate(() => {
+      const word = 'Pharmacovigilanceresponsibilities'.repeat(3);
+      document.querySelectorAll('h1, h3 a, .pager a, .tag').forEach((el) => { el.textContent = word; });
+    });
+    expect(await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth), p).toBeLessThanOrEqual(0);
+  }
+});

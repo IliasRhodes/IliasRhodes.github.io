@@ -85,3 +85,20 @@ test('reduced motion: placed pills do not animate', async ({ page }) => {
   const anim = await cell(page, 4).locator('.pill').evaluate((el) => getComputedStyle(el).animationName);
   expect(anim).toBe('none');
 });
+
+test('on a finished game the winning line and keyboard focus look different', async ({ page }) => {
+  await page.getByLabel('Hard').check();
+  for (const i of [0, 1, 3]) { // against Hard this always loses: the pharmacy completes 2-4-6
+    const before = await page.locator('[data-mark="C"]').count();
+    await cell(page, i).click();
+    await expect.poll(async () => (await page.locator('[data-mark="C"]').count()) > before).toBe(true);
+  }
+  await expect(status(page)).toContainText('The pharmacy wins');
+  await expect(page.locator('.bubble.win')).toHaveCount(3);
+  await cell(page, 2).focus();
+  await page.keyboard.press('ArrowDown'); // keyboard focus → bubble 5 (not winning)
+  await page.keyboard.press('ArrowLeft'); // → bubble 4 (winning)
+  const focused = await cell(page, 4).evaluate((el) => getComputedStyle(el).outlineStyle);
+  const unfocusedWin = await cell(page, 6).evaluate((el) => getComputedStyle(el).outlineStyle);
+  expect(focused).not.toBe(unfocusedWin);
+});

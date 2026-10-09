@@ -12,17 +12,20 @@ This repo is **public**. Private material lives one folder up, in `~/Desktop/Job
 5. **Link preview card:** `src/pages/og-card.astro`, then `npm run og`.
 
 ## Preview
-`npm run dev` → http://localhost:4321 · or `npm run screens` → `../portfolio/site/screens/`.
+`npm run dev` → http://localhost:4321 (tests use their own server on 4322, so a running preview never fools them) · or `npm run screens` → `../portfolio/site/screens/`.
 Show Ilias; wait for his OK.
 
 ## Check and publish
 ```
 npm test                              # unit + browser + accessibility
+git status                            # look: only the files you meant to change
 git add -A && git commit -m "…"       # end with the Co-Authored-By line
-git push                              # pre-push hook builds and runs the guard; blocks on any problem
+git push                              # pre-push hook: checks every commit being pushed, then builds and guards dist
 gh run watch                          # live about a minute later
 ```
-If the guard blocks: read its list, fix the source, never bypass it (`--no-verify` is not allowed).
+If the guard blocks: read its list and fix the source, then **rewrite the bad commit** (`git commit --amend`,
+or `git reset` and re-commit) — never fix it with a later commit, because every pushed commit is public forever.
+Never bypass it (`--no-verify` is not allowed). The push also refuses while there are uncommitted changes.
 After a fresh clone, reinstall the hook: `../tools/install-hook.sh`.
 
 If `astro preview` refuses to start ("already running"): `npx astro preview stop`.
