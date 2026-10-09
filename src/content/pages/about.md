@@ -15,4 +15,4 @@ The MScs gave me the research methods: a two-sample study of 115 doctors and 65 
 
 I work with AI the way other people work with a team: I decide what needs to exist, I direct it, I read everything it gives back, and I keep only what survives. Right now, with Claude Code, I am building a back-office ordering system on my own pharmacy's live ERP. It runs and prints orders; the interface design is still ahead of me, and nothing changes in the pharmacy until the pharmacist has reviewed it. It is aimed squarely at what DATAPULSE's discovery uncovered — take work off the pharmacist instead of handing them another dashboard.
 
-I am looking for a product or UX design role in healthtech, pharma or health-adjacent B2B. Rhodes, Greece — working remotely across the EU. Open to relocation for the right role.
+I am looking for a product or UX design role in healthtech, pharma or health-adjacent B2B. Rhodes, Greece — working remotely across the EU.

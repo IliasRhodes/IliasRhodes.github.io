@@ -4,7 +4,7 @@ description: "CV of Ilias Mandalos — product designer for healthcare. Pharmacy
 ---
 
 **Product Designer · UX Designer — healthcare, pharmacy operations and data**\
-Rhodes, Greece — working remotely across the EU · Open to relocation for the right role\
+Rhodes, Greece — working remotely across the EU\
 [iliasmandalos@gmail.com](mailto:iliasmandalos@gmail.com) · [linkedin.com/in/iliasmandalos](https://www.linkedin.com/in/iliasmandalos/) · [iliasmandalos.me](https://iliasmandalos.me)\
 Languages: Greek (native) · English (C2) · French (C1)
 
