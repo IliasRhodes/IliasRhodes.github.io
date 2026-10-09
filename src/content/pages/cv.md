@@ -16,8 +16,6 @@ Product and UX designer with two design MScs and fifteen years running a healthc
 
 ### Co-founder — independent retail pharmacy, Rhodes, Greece · 2011 – present
 
-*Family business, co-founded with my wife, the registered pharmacist.*
-
 - Co-founded the business in 2011 and have operated it for fifteen years.
 - Grown in customers and value year on year through the Greek debt crisis, the 2015 capital controls, sector-wide mandated price cuts and reimbursement clawbacks, and COVID — most of all since COVID.
 - 2011–2018: worked at the counter, assisting the pharmacist.
