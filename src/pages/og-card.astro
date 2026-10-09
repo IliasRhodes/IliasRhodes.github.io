@@ -1,0 +1,27 @@
+---
+// src/pages/og-card.astro — 1200×630 source for public/og.png (npm run og). Not linked anywhere.
+import '@fontsource/instrument-sans/600.css';
+import '@fontsource/martian-mono/400.css';
+import '../styles/tokens.css';
+---
+<!doctype html>
+<html lang="en">
+  <head><meta charset="utf-8" /><meta name="robots" content="noindex" /><title>Card</title></head>
+  <body>
+    <dl class="card">
+      <div><dt>Name</dt><dd>Ilias Mandalos</dd></div>
+      <div class="big"><dt>Practice</dt><dd>Product designer for healthcare.</dd></div>
+      <div><dt>Based</dt><dd>Rhodes, Greece — remote across the EU</dd></div>
+    </dl>
+  </body>
+</html>
+<style is:global>
+  :root { color-scheme: light; }
+  body { margin: 0; width: 1200px; height: 630px; display: grid; place-items: center; background: #FBFBF7; color: #16211B; font-family: var(--font-body); }
+  .card { width: 1040px; margin: 0; border: 3px solid #16211B; }
+  .card div { display: grid; grid-template-columns: 220px 1fr; border-bottom: 2px dashed #16211B; }
+  .card div:last-child { border-bottom: 0; }
+  dt { font-family: var(--font-mono); text-transform: uppercase; letter-spacing: .04em; font-size: 22px; color: #4D5A52; padding: 26px; border-right: 2px dashed #16211B; }
+  dd { margin: 0; padding: 22px 26px; font-size: 34px; }
+  .big dd { font-size: 64px; font-weight: 600; line-height: 1.05; letter-spacing: -0.02em; }
+</style>

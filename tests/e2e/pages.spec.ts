@@ -43,3 +43,18 @@ test('CV PDF is served', async ({ request }) => {
   expect(res.status()).toBe(200);
   expect(res.headers()['content-type']).toContain('pdf');
 });
+
+test('old UXfolio path shows the 404 page with a link to the work', async ({ page }) => {
+  const res = await page.goto('/p/DesignAll');
+  expect(res?.status()).toBe(404);
+  await expect(page.locator('h1')).toHaveText('Page not found');
+  await expect(page.getByRole('link', { name: 'See the work' })).toHaveAttribute('href', '/work/');
+});
+
+test('robots.txt blocks indexing before launch', async ({ request }) => {
+  expect(await (await request.get('/robots.txt')).text()).toContain('Disallow: /');
+});
+
+test('social preview image is served', async ({ request }) => {
+  expect((await request.get('/og.png')).status()).toBe(200);
+});
