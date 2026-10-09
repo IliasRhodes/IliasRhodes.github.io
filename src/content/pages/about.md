@@ -14,5 +14,3 @@ After them I founded DATAPULSE, a Power BI analytics product built directly on t
 The MScs gave me the research methods: a two-sample study of 115 doctors and 65 patients in the first, and 18 hours of structured observation across three working pharmacies in the second. Since then I have used them outside a university — a 260-person survey across 25 countries for a Parkinson's exercise app — and I work in SQL and Power BI every day on the pharmacy's own data.
 
 I work with AI the way other people work with a team: I decide what needs to exist, I direct it, I read everything it gives back, and I keep only what survives. Right now, with Claude Code, I am building a back-office ordering system on my own pharmacy's live ERP. It runs and prints orders; the interface design is still ahead of me, and nothing changes in the pharmacy until the pharmacist has reviewed it. It is aimed squarely at what DATAPULSE's discovery uncovered — take work off the pharmacist instead of handing them another dashboard.
-
-I am looking for a product or UX design role in healthtech, pharma or health-adjacent B2B. Rhodes, Greece — working remotely across the EU.
