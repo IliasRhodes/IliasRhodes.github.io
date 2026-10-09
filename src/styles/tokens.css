@@ -1,0 +1,35 @@
+/* src/styles/tokens.css — every colour, size and space on the site. Change values here only. */
+:root {
+  --bg: #FBFBF7;
+  --ink: #16211B;
+  --green: #1F6B3A;
+  --grey: #4D5A52;
+  --foil-1: #D6DAD5;
+  --foil-2: #F1F2EE;
+  --font-body: "Instrument Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "Martian Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  --text: 1.125rem;
+  --text-small: 0.9375rem;
+  --caption: 0.75rem;
+  --h1: clamp(2rem, 6vw, 3rem);
+  --h2: clamp(1.4rem, 3.5vw, 1.75rem);
+  --measure: 68ch;
+  --gutter: clamp(16px, 4vw, 40px);
+  --space-1: 0.5rem;
+  --space-2: 1rem;
+  --space-3: 1.5rem;
+  --space-4: 2.5rem;
+  --space-5: 4rem;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #111814;
+    --ink: #E7ECE8;
+    --green: #7DD39A;
+    --grey: #AEBAB2;
+    --foil-1: #3A433D;
+    --foil-2: #59625C;
+    color-scheme: dark;
+  }
+}

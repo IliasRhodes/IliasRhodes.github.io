@@ -1,0 +1,16 @@
+---
+// src/components/Footer.astro
+import { SITE } from '../../site.config.mjs';
+---
+<footer class="site-footer wrap">
+  <ul class="mono">
+    <li><a href={`mailto:${SITE.email}`}>{SITE.email}</a></li>
+    <li><a href={SITE.linkedin}>LinkedIn</a></li>
+    <li><a href="/cv.pdf">CV (PDF)</a></li>
+  </ul>
+</footer>
+<style>
+  .site-footer { border-top: 1.5px solid var(--ink); padding-block: var(--space-3) var(--space-4); }
+  ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: var(--space-1) var(--space-3); text-transform: none; }
+  a { display: inline-block; padding-block: 0.4rem; }
+</style>

@@ -1,0 +1,23 @@
+---
+// src/components/Header.astro
+import { SITE } from '../../site.config.mjs';
+const links = [['/work/', 'Work'], ['/about/', 'About'], ['/cv/', 'CV'], ['/play/', 'Play']];
+const here = Astro.url.pathname;
+---
+<header class="site-header wrap">
+  <a class="mono name" href="/" aria-current={here === '/' ? 'page' : undefined}>{SITE.name}</a>
+  <nav aria-label="Main">
+    <ul>
+      {links.map(([href, label]) => (
+        <li><a class="mono" href={href} aria-current={here.startsWith(href) ? 'page' : undefined}>{label}</a></li>
+      ))}
+    </ul>
+  </nav>
+</header>
+<style>
+  .site-header { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: var(--space-1) var(--space-3); padding-block: var(--space-3); }
+  .name { font-weight: 500; text-decoration: none; }
+  ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: var(--space-1) var(--space-3); }
+  nav a { padding-block: 0.4rem; display: inline-block; }
+  nav a[aria-current='page'] { text-decoration-thickness: 4px; }
+</style>

@@ -1,0 +1,45 @@
+---
+// src/layouts/BaseLayout.astro
+import '@fontsource/instrument-sans/400.css';
+import '@fontsource/instrument-sans/600.css';
+import '@fontsource/martian-mono/400.css';
+import '@fontsource/martian-mono/500.css';
+import '../styles/tokens.css';
+import '../styles/global.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { SITE } from '../../site.config.mjs';
+
+interface Props { title: string; description: string; }
+const { title, description } = Astro.props;
+const fullTitle = Astro.url.pathname === '/' ? `${SITE.name} — ${SITE.role}` : `${title} — ${SITE.name}`;
+const canonical = new URL(Astro.url.pathname, SITE.url).href;
+const ogImage = new URL('/og.png', SITE.url).href;
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    {!SITE.indexable && <meta name="robots" content="noindex, nofollow" />}
+    <meta name="color-scheme" content="light dark" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+    <Header />
+    <main id="main" class="wrap" tabindex="-1"><slot /></main>
+    <Footer />
+  </body>
+</html>
