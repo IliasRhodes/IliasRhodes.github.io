@@ -1,0 +1,28 @@
+---
+// src/pages/work/[slug].astro
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import '../../styles/prose.css';
+
+export async function getStaticPaths() {
+  const cases = (await getCollection('work')).sort((a, b) => a.data.order - b.data.order);
+  return cases.map((entry, i) => ({ params: { slug: entry.id }, props: { entry, prev: cases[i - 1], next: cases[i + 1] } }));
+}
+const { entry, prev, next } = Astro.props;
+const { Content } = await render(entry);
+---
+<BaseLayout title={entry.data.title} description={entry.data.summary}>
+  <article>
+    <p class="mono tag">{entry.data.tag}</p>
+    <h1>{entry.data.title}</h1>
+    <div class="prose"><Content /></div>
+  </article>
+  <nav class="pager" aria-label="More work">
+    {prev && <a href={`/work/${prev.id}/`} rel="prev">← {prev.data.title}</a>}
+    {next && <a href={`/work/${next.id}/`} rel="next">{next.data.title} →</a>}
+  </nav>
+</BaseLayout>
+<style>
+  .tag { color: var(--green); margin: 0 0 var(--space-1); }
+  .pager { display: flex; flex-wrap: wrap; justify-content: space-between; gap: var(--space-2); border-top: 1.5px solid var(--ink); margin-top: var(--space-5); padding-top: var(--space-3); }
+</style>

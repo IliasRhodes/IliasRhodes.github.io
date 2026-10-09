@@ -1,0 +1,19 @@
+/* src/styles/prose.css — long-form text: case studies, About, CV. */
+.prose { max-width: var(--measure); overflow-wrap: break-word; }
+.prose h2 { font-size: var(--h2); margin: var(--space-5) 0 var(--space-2); }
+.prose h3 { font-size: 1.2rem; margin: var(--space-4) 0 var(--space-1); }
+.prose p, .prose ul, .prose ol { margin: 0 0 var(--space-2); }
+.prose blockquote { margin: var(--space-3) 0; padding-left: var(--space-2); border-left: 3px solid var(--green); }
+.prose hr { border: 0; border-top: 1px dashed var(--ink); margin: var(--space-4) 0; }
+.prose .table-scroll { overflow-x: auto; margin: var(--space-3) 0; }
+.prose table { border-collapse: collapse; font-size: var(--text-small); min-width: 32rem; }
+.prose th, .prose td { text-align: left; vertical-align: top; padding: 0.5rem 0.75rem; border-bottom: 1px solid var(--ink); }
+.prose th { font-family: var(--font-mono); font-size: var(--caption); font-weight: 500; letter-spacing: 0.04em; text-transform: uppercase; color: var(--grey); }
+.prose figure { margin: var(--space-4) 0; }
+.prose img { display: block; max-width: 100%; height: auto; border: 1px solid var(--ink); }
+.prose figure.phone img { border-radius: 22px; }
+.prose figure.mark img { max-width: 14rem; border: 0; }
+.prose figcaption { font-size: var(--text-small); color: var(--grey); margin-top: var(--space-1); }
+.prose .row { display: grid; grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr)); gap: var(--space-2); align-items: start; margin: var(--space-4) 0; }
+.prose .row figure { margin: 0; }
+@media (min-width: 72rem) { .prose figure:not(.row figure):not(.mark), .prose .row { margin-inline-end: -14rem; } }

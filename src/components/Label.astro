@@ -1,0 +1,26 @@
+---
+// src/components/Label.astro — the dispensing-label box (§3 signature element).
+interface Row { caption: string; text: string; heading?: boolean }
+interface Props { rows: Row[] }
+const { rows } = Astro.props;
+---
+<dl class="label">
+  {rows.map((r) => (
+    <div class:list={['row', { big: r.heading }]}>
+      <dt class="mono">{r.caption}</dt>
+      <dd>{r.heading ? <h1>{r.text}</h1> : r.text}</dd>
+    </div>
+  ))}
+</dl>
+<style>
+  .label { border: 1.5px solid var(--ink); margin: 0 0 var(--space-5); }
+  .row { display: grid; grid-template-columns: 9rem minmax(0, 1fr); border-bottom: 1px dashed var(--ink); }
+  .row:last-child { border-bottom: 0; }
+  dt, dd { margin: 0; padding: 0.75rem 1rem; }
+  dt { border-right: 1px dashed var(--ink); color: var(--grey); padding-top: 1rem; }
+  .big h1 { margin: 0; font-size: clamp(1.75rem, 6vw, 3rem); line-height: 1.05; }
+  @media (max-width: 40rem) {
+    .row { grid-template-columns: minmax(0, 1fr); }
+    dt { border-right: 0; padding-bottom: 0; }
+  }
+</style>

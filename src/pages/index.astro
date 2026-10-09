@@ -1,5 +1,20 @@
 ---
-// src/pages/index.astro — stub, replaced in Task 5
+// src/pages/index.astro
+import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
+import Label from '../components/Label.astro';
+import CaseList from '../components/CaseList.astro';
+const cases = (await getCollection('work')).sort((a, b) => a.data.order - b.data.order);
 ---
-<BaseLayout title="Home" description="Product designer for healthcare."><h1>Product designer for healthcare.</h1></BaseLayout>
+<BaseLayout title="Home" description="Product designer for healthcare. Fifteen years co-running a pharmacy, two design MScs, one healthtech product founded and closed. Rhodes, Greece — working remotely across the EU.">
+  <Label rows={[
+    { caption: 'Practice', text: 'Product designer for healthcare.', heading: true },
+    { caption: 'Background', text: 'Fifteen years co-running a pharmacy. Two design MScs. One healthtech product founded and closed.' },
+    { caption: 'Interests', text: 'Medication adherence · pharmacy operations · health data · AI-assisted building' },
+    { caption: 'Based', text: 'Rhodes, Greece — working remotely across the EU. Open to relocation for the right role.' },
+  ]} />
+  <section aria-labelledby="work-h">
+    <h2 id="work-h" class="mono">Selected work</h2>
+    <CaseList cases={cases} />
+  </section>
+</BaseLayout>

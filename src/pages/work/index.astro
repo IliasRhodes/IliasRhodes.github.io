@@ -1,0 +1,11 @@
+---
+// src/pages/work/index.astro
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import CaseList from '../../components/CaseList.astro';
+const cases = (await getCollection('work')).sort((a, b) => a.data.order - b.data.order);
+---
+<BaseLayout title="Work" description="Four healthcare and product case studies: research, design, and a business taken to market and closed.">
+  <h1>Work</h1>
+  <CaseList cases={cases} />
+</BaseLayout>
