@@ -11,6 +11,7 @@
 .prose th { font-family: var(--font-mono); font-size: var(--caption); font-weight: 500; letter-spacing: 0.04em; text-transform: uppercase; color: var(--grey); }
 .prose figure { margin: var(--space-4) 0; }
 .prose img { display: block; max-width: 100%; height: auto; border: 1px solid var(--ink); }
+.prose figure.phone { max-width: 15rem; }
 .prose figure.phone img { border-radius: 22px; }
 .prose figure.mark img { max-width: 14rem; border: 0; }
 .prose figcaption { font-size: var(--text-small); color: var(--grey); margin-top: var(--space-1); }
