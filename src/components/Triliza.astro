@@ -1,0 +1,66 @@
+---
+// src/components/Triliza.astro — the blister pack (§4). Works only with JavaScript; says so without it.
+const cells = Array.from({ length: 9 }, (_, i) => i);
+---
+<section class="triliza" aria-labelledby="play-h">
+  <h1 id="play-h" lang="el">Τρίλιζα</h1>
+  <p class="intro"><span lang="el">Τρίλιζα</span> — Greek for tic-tac-toe. You play the capsule; the pharmacy plays the round tablet.</p>
+  <noscript><p>The game needs JavaScript. Everything else on this site works without it.</p></noscript>
+  <div class="controls" data-controls hidden>
+    <fieldset>
+      <legend class="mono">Difficulty</legend>
+      <label><input type="radio" name="level" value="easy" checked /> Easy</label>
+      <label><input type="radio" name="level" value="hard" /> Hard</label>
+    </fieldset>
+    <button type="button" data-new>New pack</button>
+    <button type="button" data-sound aria-pressed="false">Sound</button>
+  </div>
+  <div class="pack" role="group" aria-label="Blister pack, three by three" data-board hidden>
+    {cells.map((i) => (
+      <button type="button" class="bubble" data-cell={i} tabindex={i === 0 ? 0 : -1}
+        aria-label={`Row ${Math.floor(i / 3) + 1}, column ${(i % 3) + 1}, empty`}>
+        <span class="pill" aria-hidden="true"></span>
+      </button>
+    ))}
+  </div>
+  <p class="status" data-status aria-live="polite"></p>
+  <dl class="score mono" data-score hidden>
+    <div><dt>You</dt><dd data-you>0</dd></div>
+    <div><dt>Pharmacy</dt><dd data-pharmacy>0</dd></div>
+    <div><dt>Draws</dt><dd data-draws>0</dd></div>
+  </dl>
+</section>
+<script>
+  import { initTriliza } from '../scripts/triliza-ui.mjs';
+  initTriliza(document.querySelector('.triliza'));
+</script>
+<style>
+  .triliza { display: grid; gap: var(--space-3); justify-items: start; }
+  .triliza h1 { margin: 0; }
+  .intro { margin: 0; max-width: var(--measure); }
+  .controls { display: flex; flex-wrap: wrap; gap: var(--space-2); align-items: end; }
+  fieldset { border: 1px solid var(--ink); margin: 0; padding: 0.25rem 0.75rem 0.5rem; display: flex; gap: var(--space-2); }
+  legend { padding: 0 0.25rem; }
+  label { display: inline-flex; gap: 0.4rem; align-items: center; min-height: 44px; }
+  input { accent-color: var(--green); width: 1.1rem; height: 1.1rem; }
+  .controls button { font: inherit; color: var(--ink); background: var(--bg); border: 1.5px solid var(--ink); padding: 0.5rem 1rem; min-height: 44px; cursor: pointer; }
+  .controls button[aria-pressed='true'] { background: var(--ink); color: var(--bg); }
+  .pack { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(10px, 3vw, 18px); width: min(100%, 26rem);
+          padding: clamp(14px, 4vw, 24px); border: 1.5px solid var(--ink); border-radius: 14px;
+          background: linear-gradient(135deg, var(--foil-1), var(--foil-2) 45%, var(--foil-1)); }
+  .bubble { aspect-ratio: 1; display: grid; place-items: center; border: 1px solid var(--ink); border-radius: 22px;
+            background: color-mix(in srgb, var(--bg) 55%, transparent); cursor: pointer; padding: 0; }
+  .bubble[aria-disabled='true'] { cursor: default; }
+  .bubble.win { outline: 3px solid var(--green); outline-offset: 2px; }
+  .pill { display: none; }
+  .bubble[data-mark='Y'] .pill { display: block; width: 74%; height: 34%; border: 2px solid var(--ink); border-radius: 999px;
+                                 background: linear-gradient(90deg, var(--green) 50%, var(--bg) 50%); rotate: -35deg; }
+  .bubble[data-mark='C'] .pill { display: block; width: 56%; aspect-ratio: 1; border: 2px solid var(--ink); border-radius: 50%;
+                                 background: linear-gradient(var(--bg) 46%, var(--ink) 46% 54%, var(--bg) 54%); }
+  .bubble.placed .pill { animation: pop 180ms ease-out; }
+  @keyframes pop { from { scale: 0.6; } }
+  .status { margin: 0; min-height: 1.6em; }
+  .score { display: flex; gap: var(--space-3); margin: 0; }
+  .score div { display: flex; gap: 0.5rem; }
+  .score dd { margin: 0; color: var(--green); font-weight: 500; }
+</style>
