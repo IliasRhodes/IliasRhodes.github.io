@@ -8,7 +8,8 @@ for (const p of PAGES) {
     expect(res?.status()).toBe(200);
     await expect(page.locator('h1')).toHaveCount(1);
     await expect(page.locator('footer a[href="mailto:iliasmandalos@gmail.com"]')).toBeVisible();
-    await expect(page.locator('meta[name="robots"]')).toHaveAttribute('content', 'noindex, nofollow');
+    await expect(page.locator('meta[name="robots"]')).toHaveCount(0);
+    await expect(page.locator('link[rel="canonical"]')).toHaveAttribute('href', `https://iliasmandalos.me${p}`);
   });
 }
 
@@ -51,8 +52,12 @@ test('old UXfolio path shows the 404 page with a link to the work', async ({ pag
   await expect(page.getByRole('link', { name: 'See the work' })).toHaveAttribute('href', '/work/');
 });
 
-test('robots.txt blocks indexing before launch', async ({ request }) => {
-  expect(await (await request.get('/robots.txt')).text()).toContain('Disallow: /');
+test('robots.txt allows indexing after launch', async ({ request }) => {
+  expect(await (await request.get('/robots.txt')).text()).toContain('Allow: /');
+});
+
+test('CNAME file names the custom domain', async ({ request }) => {
+  expect((await (await request.get('/CNAME')).text()).trim()).toBe('iliasmandalos.me');
 });
 
 test('social preview image is served', async ({ request }) => {
