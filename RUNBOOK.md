@@ -10,6 +10,9 @@ This repo is **public**. Private material lives one folder up, in `~/Desktop/Job
 3. **Colours, fonts, spacing:** `src/styles/tokens.css` only. `npm run test:unit` checks contrast.
 4. **Home label wording:** `src/pages/index.astro`.
 5. **Link preview card:** `src/pages/og-card.astro`, then `npm run og`.
+6. **Photography:** originals live in `../photography/originals/`; order and alt text in `../photography/photos.json`.
+   Then `node ../tools/sync-photos.mjs` (strips all metadata). Never edit `public/photography/` or `src/data/photos.json` by hand.
+   Check every new photo by eye first: no family, no recognisable pharmacy screens or data.
 
 ## Preview
 `npm run dev` → http://localhost:4321 (tests use their own server on 4322, so a running preview never fools them) · or `npm run screens` → `../portfolio/site/screens/`.
