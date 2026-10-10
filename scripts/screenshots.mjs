@@ -3,7 +3,7 @@ import fs from 'node:fs';
 import { withPreview } from './with-preview.mjs';
 
 const OUT = '../portfolio/site/screens';
-const PAGES = { home: '/', work: '/work/', pilly: '/work/pilly/', kinisi: '/work/kinisi/', datapulse: '/work/datapulse/', lexis: '/work/lexis/', about: '/about/', cv: '/cv/', play: '/play/', '404': '/p/DesignAll' };
+const PAGES = { home: '/', work: '/work/', pilly: '/work/pilly/', kinisi: '/work/kinisi/', datapulse: '/work/datapulse/', lexis: '/work/lexis/', about: '/about/', cv: '/cv/', photography: '/photography/', play: '/play/', '404': '/p/DesignAll' };
 const WIDTHS = { phone: 390, tablet: 820, desktop: 1440 };
 fs.mkdirSync(OUT, { recursive: true });
 
