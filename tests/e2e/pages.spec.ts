@@ -13,9 +13,9 @@ for (const p of PAGES) {
   });
 }
 
-test('home lists the four cases in order', async ({ page }) => {
+test('home lists the five cases in order', async ({ page }) => {
   await page.goto('/');
-  await expect(page.locator('.cases h3 a')).toHaveText(['Price, stock, renewals', 'Community came last', '100 doors', 'Ten decisions, nothing built']);
+  await expect(page.locator('.cases h3 a')).toHaveText(['Price, stock, renewals', 'Community came last', '100 doors', 'Ten decisions, nothing built', 'Same questions, both sides']);
 });
 
 test('nav marks Work as current on a case study', async ({ page }) => {
